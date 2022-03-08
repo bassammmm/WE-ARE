@@ -20,7 +20,7 @@ This application will allow users to do the following in VR mode:
 
 Here is a demo of 2 users enjoying a movie in our virtual cinema
 
-[![Watch the video](ss/opening.PNG)](https://youtu.be/WKPVKqt3R8w)
+[![Watch the video](ss/opening.PNG)](https://www.youtube.com/watch?v=WKPVKqt3R8w)
 
 
 ## Screenshots

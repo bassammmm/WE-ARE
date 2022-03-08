@@ -20,7 +20,9 @@ This application will allow users to do the following in VR mode:
 
 Here is a demo of 2 users enjoying a movie in our virtual cinema
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WKPVKqt3R8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+https://user-images.githubusercontent.com/19605547/157233342-990cb00a-1114-4df1-8dc8-51af2d9ba980.mp4
+
 
 
 ## Screenshots

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "25579111455",
+    "firebase_url": "https://fyp-proj2021-default-rtdb.firebaseio.com",
+    "project_id": "fyp-proj2021",
+    "storage_bucket": "fyp-proj2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25579111455:android:a22e260f706b2280d4c12a",
+        "android_client_info": {
+          "package_name": "com.Bassam.FYPV2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25579111455-2eu7t2atq8aomsg4tsi1flruddvaoo9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1UzXfL5s0ARSu12e0tVVFons27fQsZ4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25579111455-2eu7t2atq8aomsg4tsi1flruddvaoo9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

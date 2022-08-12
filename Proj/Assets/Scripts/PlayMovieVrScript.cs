@@ -9,11 +9,12 @@ using TMPro;
 public class PlayMovieVrScript : MonoBehaviour
 {
     public GameObject OnLoadPhotonObject;
-    OnLoadPunManagerScript OnLoadPunScript;
     public GameObject OnLoadCreateRoomObject;
-    public GameObject OnLoad2DGameObject;
+    public GameObject OnLoadRealtimeGameObject;
     public TMP_Text roomName;
-    
+    public GameObject ErrorMessage;
+
+    OnLoadPunManagerScript OnLoadPunScript;
     OnLoadCanvasVrCreateRoomScript onLoadScript;
     OnlLoad2DRealtimeDatabaseManager onLoadRealtimeScript;
     
@@ -43,30 +44,45 @@ public class PlayMovieVrScript : MonoBehaviour
     private void OnEnable()
     {
         onLoadScript = OnLoadCreateRoomObject.GetComponent<OnLoadCanvasVrCreateRoomScript>();
-        onLoadRealtimeScript = OnLoad2DGameObject.GetComponent<OnlLoad2DRealtimeDatabaseManager>();
+        onLoadRealtimeScript = OnLoadRealtimeGameObject.GetComponent<OnlLoad2DRealtimeDatabaseManager>();
         OnLoadPunScript = OnLoadPhotonObject.GetComponent<OnLoadPunManagerScript>();
 
     }
 
     public void OnPlayVrMovieButton()
     {
+        var RoomName = roomName.text.Trim();
 
-        var auth = FirebaseAuth.DefaultInstance;
 
-        var myuserId = auth.CurrentUser.UserId;
 
-        foreach (string userId in onLoadScript.usersInvited)
+        if (RoomName.Length <= 2)
         {
+            ErrorMessage.SetActive(true);
+        }
+        else
+        {
+            var auth = FirebaseAuth.DefaultInstance;
 
-            var RoomName = roomName.text.Trim();
-            onLoadRealtimeScript.InviteRoomMethodCall(userId, RoomName, myuserId);
+            var myuserId = auth.CurrentUser.UserId;
+
+            var sceneName = OnLoadPunScript.SceneName;
+
+            Debug.Log("Scene Name being sent to users : " + sceneName);
+
+            foreach (string userId in onLoadScript.usersInvited)
+            {
+
+                RoomName = roomName.text.Trim();
+                onLoadRealtimeScript.InviteRoomMethodCall(userId, RoomName, myuserId, sceneName);
+
+            }
+
+
+            OnLoadPunScript.CreateRoom(roomName.text.Trim());
 
         }
 
 
-        OnLoadPunScript.CreateRoom(roomName.text.Trim());
-        OnLoadPunScript.SceneName = "CinemaVR";
-        
     }
 
 

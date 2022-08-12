@@ -2,27 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon;
+using Photon.Pun;
 
-public class ExitVRScript : MonoBehaviour
+using UnityEngine.XR;
+public class ExitVRScript : MonoBehaviourPunCallbacks
 {
-
-    // Start is called before the first frame update
-    void Start()
+    public string SceneName;
+    
+    
+    private void OnEnable()
     {
         
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-
 
     public void OnCinemaVrButtonClick()
     {
-        SceneManager.UnloadScene("CinemaVR");
-        SceneManager.LoadScene("2DApp");
+
+        RemoveNetworkPrefabVar();
+        StartCoroutine(LeaveRoomClick());
         
+    }
+
+    public void RemoveNetworkPrefabVar()
+    {
+
+        var obj = GameObject.Find("__app");
+        var objScript = obj.GetComponent<PreLoadTestPhotonObjects>();
+        objScript.myNetworkPrefab = false;
+    }
+
+    IEnumerator LeaveRoomClick()
+    {
+        PhotonNetwork.LeaveRoom();
+        while (PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+        SceneManager.UnloadScene(SceneName);
+        SceneManager.LoadScene("2DApp");
+
     }
 }

@@ -27,7 +27,7 @@ public class VideoPlayerScript : MonoBehaviour
     {
         if (videoPlayer.frameCount > 0)
         {
-            Debug.Log(videoPlayer.frame + "/" + videoPlayer.frameCount);
+            //Debug.Log(videoPlayer.frame + "/" + videoPlayer.frameCount);
         }
     }
 

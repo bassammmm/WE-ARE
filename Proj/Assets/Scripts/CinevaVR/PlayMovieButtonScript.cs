@@ -39,6 +39,8 @@ public class PlayMovieButtonScript : MonoBehaviour
         if (obj.Code == PLAYVID_EVENT)
         {
             vidPlayer.Play();
+            CinemaVRinitVrScript cinemaVRinitVrScript = GameObject.Find("ObjectOnLoad").GetComponent<CinemaVRinitVrScript>();
+            cinemaVRinitVrScript.currentFrame = vidPlayer.frame;
         }
     }
 

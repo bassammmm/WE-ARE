@@ -15,6 +15,8 @@ using TMPro;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.Threading.Tasks;
+using UnityEngine.Video;
+
 
 public class CinemaVRinitVrScript : MonoBehaviour
 {
@@ -29,9 +31,11 @@ public class CinemaVRinitVrScript : MonoBehaviour
     int ViewId;
     string Username;
     GameObject PlayerListNameObject;
+    public long currentFrame;
+
 
     public const byte CREATE_PLAYERNAME_LIST = 3;
-
+    public const byte SET_MOVIE_FRAME = 12;
 
     private void Awake()
     {
@@ -44,6 +48,7 @@ public class CinemaVRinitVrScript : MonoBehaviour
 
     void Start()
     {
+        
         StartCoroutine(SwitchToVR());
         
         setUserName();
@@ -51,6 +56,9 @@ public class CinemaVRinitVrScript : MonoBehaviour
 
         UpdatePlayerList();
         Debug.Log(PhotonNetwork.CurrentRoom.Name);
+        VideoPlayer videoPlayer = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
+        videoPlayer.Prepare();
+
     }
 
 
@@ -82,7 +90,29 @@ public class CinemaVRinitVrScript : MonoBehaviour
             PhotonPlayerList();
 
         }
+        else if (obj.Code == SET_MOVIE_FRAME)
+        {
+            //Dosomething;
+            object[] datas = (object[])obj.CustomData;
+            long currFrame = (long)datas[0];
+            Debug.Log(currFrame);
+            Debug.Log("------------------------------------------------------------------------->>>>>>>>>>>>>>>> IN RPC");
+            VideoPlayer videoPlayer = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
+            videoPlayer.frame = currFrame;
+            videoPlayer.Prepare();
+            
+        }
     }
+
+
+    public void setMovieFrameRaiseEvent(long currFrame)
+    {
+        object[] datas = new object[] { currFrame };
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(SET_MOVIE_FRAME, datas, raiseEventOptions, SendOptions.SendUnreliable);
+    }
+
+
 
 
     void UpdatePlayerList()

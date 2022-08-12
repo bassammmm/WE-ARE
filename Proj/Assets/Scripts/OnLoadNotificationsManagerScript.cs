@@ -189,13 +189,13 @@ public class OnLoadNotificationsManagerScript : MonoBehaviour
                 {
 
 
-
-
+                    string notificationKey = childSnapshot.Key;
 
                     string roomID = childSnapshot.Child("roomID").Value.ToString();
                     string userID = childSnapshot.Child("userID").Value.ToString();
                     string hostID = childSnapshot.Child("hostID").Value.ToString();
-                    inv_data.Add(new InviteData(userID, roomID, hostID));
+                    string sceneName = childSnapshot.Child("sceneName").Value.ToString();
+                    inv_data.Add(new InviteData(userID, roomID, hostID,sceneName));
 
 
                     await GetFriendsDataCall(hostID);
@@ -206,7 +206,9 @@ public class OnLoadNotificationsManagerScript : MonoBehaviour
                     notificationPref.transform.Find("Text (TMP) ViewFriendName").GetComponent<TMP_Text>().text = firstName + " " + lastName + " (" + userName + ")" + " || " + roomID;
                     notificationPref.transform.Find("id").GetComponent<TMP_Text>().text = hostID;
                     notificationPref.transform.Find("roomid").GetComponent<TMP_Text>().text = roomID;
-
+                    notificationPref.transform.Find("sceneName").GetComponent<TMP_Text>().text = sceneName;
+                    notificationPref.transform.Find("notificationkey").GetComponent<TMP_Text>().text = notificationKey;
+                    
 
 
                 }

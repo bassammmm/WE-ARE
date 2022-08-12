@@ -36,7 +36,7 @@ public class CanvasProfileScript : MonoBehaviour
             var characterData = task.Result.ConvertTo<CharacterStruct>();
             Debug.Log(characterData.FirstName);
 
-            username.GetComponent<TMP_Text>().text = characterData.FirstName + ' ' + characterData.LastName;
+            username.GetComponent<TMP_Text>().text = characterData.FirstName + ' ' + characterData.LastName + '\n' + "(" + characterData.UserName  + ")";
             
 
 

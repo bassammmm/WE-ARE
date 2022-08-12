@@ -15834,6 +15834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0daeea4629278d4f996ed119e95b85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneName: CinemaVR
 --- !u!114 &886359038
 MonoBehaviour:
   m_ObjectHideFlags: 0

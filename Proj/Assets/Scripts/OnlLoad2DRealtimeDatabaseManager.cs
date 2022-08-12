@@ -28,14 +28,15 @@ public class OnlLoad2DRealtimeDatabaseManager : MonoBehaviour
 
 
 
-    public void InviteRoomMethodCall(string userID, string roomID, string hostUserID)
+    public void InviteRoomMethodCall(string userID, string roomID, string hostUserID, string sceneName)
     {
-        StartCoroutine(InviteRoomMethod(userID, roomID, hostUserID));
+        StartCoroutine(InviteRoomMethod(userID, roomID, hostUserID, sceneName));
     }
 
-    public IEnumerator InviteRoomMethod(string userID, string roomID, string hostUserID)
+    public IEnumerator InviteRoomMethod(string userID, string roomID, string hostUserID, string sceneName)
     {
-        InviteData inv_data = new InviteData(userID, roomID, hostUserID);
+        Debug.Log("SCene name in Invite room method : " + sceneName);
+        InviteData inv_data = new InviteData(userID, roomID, hostUserID, sceneName);
         string json = JsonUtility.ToJson(inv_data);
         string key = reference.Child("Invites").Child(userID).Push().Key;
         var AddInviteTask = reference.Child("Invites").Child(userID).Child(key).SetRawJsonValueAsync(json);

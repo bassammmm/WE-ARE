@@ -1,0 +1,6 @@
+framework module NexPlayer {
+  umbrella header "NexPlayer.h"
+
+  export *
+  module * { export * }
+}

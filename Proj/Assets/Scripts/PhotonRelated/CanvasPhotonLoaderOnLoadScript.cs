@@ -5,10 +5,13 @@ using UnityEngine;
 public class CanvasPhotonLoaderOnLoadScript : MonoBehaviour
 {
     public GameObject OnLoadPhotonObject;
-    OnLoadPunManagerScript OnLoadPunScript;
     public GameObject MyCanvas;
     public GameObject FriendsCanvas;
+
+
+    OnLoadPunManagerScript OnLoadPunScript;
     CanvasManagerPublicScript canvasManager;
+
     bool IsPunConnected = false;
 
 

@@ -37,7 +37,7 @@ public class OnPhotonLoaderClientScript : MonoBehaviour
     private void OnEnable()
     {
         OnLoadPunScript = OnLoadPhotonObject.GetComponent<OnLoadPunManagerScript>();
-        OnLoadPunScript.SceneName = "CinemaVr";
+
 
         if (OnLoadPunScript.CheckRoomConnected())
         {

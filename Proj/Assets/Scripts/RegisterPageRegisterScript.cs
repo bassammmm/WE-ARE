@@ -17,6 +17,9 @@ public class RegisterPageRegisterScript : MonoBehaviour
     public GameObject RegisterCanvas;
     public GameObject LoginCanvas;
 
+    public GameObject ErrorMessage;
+
+
     CanvasManagerPublicScript canvasManager;
     private Coroutine _RegistrationCoroutine;
 
@@ -56,6 +59,7 @@ public class RegisterPageRegisterScript : MonoBehaviour
         }
         else
         {
+            ErrorMessage.SetActive(true);
             Debug.Log("Information is incomplete, please fill all the required fields.");
         }
 
@@ -69,6 +73,7 @@ public class RegisterPageRegisterScript : MonoBehaviour
 
         if (registerTask.Exception != null)
         {
+            ErrorMessage.SetActive(true);
             Debug.Log($"An error occured while registration! {registerTask.Exception}");
         }
         else
@@ -91,6 +96,7 @@ public class RegisterPageRegisterScript : MonoBehaviour
         var task = firestore.Collection("users").Document(uid).SetAsync(charaterData);
         if (task.Exception != null)
         {
+            ErrorMessage.SetActive(true);
             Debug.Log($"Firestore data upload error {task.Exception}");
         }
         else

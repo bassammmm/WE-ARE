@@ -30,11 +30,14 @@ public class CreateRoomLoaderScript : MonoBehaviour
 
 
 
-
-    void Start()
+    private void OnEnable()
     {
 
         GetFriendsData();
+    }
+    void Start()
+    {
+
     }
 
 

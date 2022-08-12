@@ -33,10 +33,19 @@ public class FriendRequesthandlerScript : MonoBehaviour
 
         DeleteFriendReq();
 
-
+        RefreshFriendList();
 
 
     }
+
+
+    public void RefreshFriendList()
+    {
+        GameObject canvasFriends = GameObject.Find("Canvas (Friends)");
+        FriendsPageLoaderScript friendsLoader = canvasFriends.GetComponent<FriendsPageLoaderScript>();
+        friendsLoader.GetFriendsData();
+    }
+
 
     public void OnRejectClick()
     {

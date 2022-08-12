@@ -14,6 +14,8 @@ public class LoginPageSignInScript : MonoBehaviour
     public GameObject RegisterCanvas;
     public GameObject LoginCanvas;
 
+    public GameObject ErrorMessage;
+
     CanvasManagerPublicScript canvasManager;
     OnLoadNotificationsManagerScript OnLoadNotificationHandlerScript;
 
@@ -37,6 +39,10 @@ public class LoginPageSignInScript : MonoBehaviour
         {
             _SignInUser = StartCoroutine(SignInUser(usernameText,passwordText));
         }
+        else
+        {
+            ErrorMessage.SetActive(true);
+        }
 
 
     }
@@ -52,6 +58,7 @@ public class LoginPageSignInScript : MonoBehaviour
 
         if (loginTask.Exception!=null)
         {
+            ErrorMessage.SetActive(true);
             Debug.Log($"An error occured while logging in ! {loginTask.Exception}");
         }
         else

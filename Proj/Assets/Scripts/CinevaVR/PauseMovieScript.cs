@@ -38,6 +38,9 @@ public class PauseMovieScript : MonoBehaviour
         if (obj.Code == PAUSEVID_EVENT)
         {
             vidPlayer.Pause();
+            CinemaVRinitVrScript cinemaVRinitVrScript = GameObject.Find("ObjectOnLoad").GetComponent<CinemaVRinitVrScript>();
+            cinemaVRinitVrScript.currentFrame = vidPlayer.frame;
+            cinemaVRinitVrScript.setMovieFrameRaiseEvent(cinemaVRinitVrScript.currentFrame);
         }
     }
 
@@ -48,6 +51,9 @@ public class PauseMovieScript : MonoBehaviour
     public void PauseMovieClick()
     {
         vidPlayer.Pause();
+        Debug.Log(vidPlayer.frame);
+        Debug.Log(vidPlayer.frameCount);
+
         object[] datas = new object[] { 0 };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(PAUSEVID_EVENT, datas, raiseEventOptions, SendOptions.SendUnreliable);

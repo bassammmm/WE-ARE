@@ -47,13 +47,15 @@ public class InviteData
     public string userID;
     public string roomID;
     public string hostID;
+    public string sceneName;
 
 
-    public InviteData(string userID, string roomID, string hostID)
+    public InviteData(string userID, string roomID, string hostID, string sceneName)
     {
         this.userID = userID;
         this.roomID = roomID;
         this.hostID = hostID;
+        this.sceneName = sceneName;
     }
 }
 

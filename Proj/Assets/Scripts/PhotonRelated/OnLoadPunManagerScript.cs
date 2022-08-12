@@ -83,7 +83,7 @@ public class OnLoadPunManagerScript : MonoBehaviourPunCallbacks
 
 
 
-
+    
 
 
 
@@ -153,7 +153,6 @@ public class OnLoadPunManagerScript : MonoBehaviourPunCallbacks
         Debug.Log("Connected to scene");
 
     }
-
 
 
 
